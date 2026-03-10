@@ -153,6 +153,30 @@ const Hero = () => {
   );
 };
 
+const Poster = () => (
+  <section style={{ padding: "80px 28px" }}>
+    <div style={{ maxWidth: 720, margin: "0 auto" }}>
+      <R>
+        <div style={{
+          borderRadius: 24, overflow: "hidden", border: `1px solid ${C.gray200}`,
+          boxShadow: "0 8px 40px rgba(0,0,0,0.06)",
+          transition: "transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s",
+          cursor: "default",
+        }}
+          onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 16px 60px rgba(0,0,0,0.1)"; }}
+          onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "0 8px 40px rgba(0,0,0,0.06)"; }}
+        >
+          <img
+            src="/poster.png"
+            alt="횃불이유괴단 포스터"
+            style={{ width: "100%", height: "auto", display: "block" }}
+          />
+        </div>
+      </R>
+    </div>
+  </section>
+);
+
 const About = () => (
   <section id="about" style={{ padding: "120px 28px" }}>
     <div style={{ maxWidth: 1080, margin: "0 auto" }}>
@@ -349,6 +373,7 @@ export default function App() {
       <Nav />
       <Hero />
       <Ticker />
+      <Poster />
       <About />
       <Team />
       <Projects />
