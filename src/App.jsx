@@ -337,7 +337,7 @@ const Contact = () => (
         </p>
       </R>
       <R d={0.18}>
-        <MagBtn filled href="https://forms.gle/cc8EivjRDECzyY799">지원하기 →</MagBtn>
+        <MagBtn filled href="https://forms.gle/cc8EivjRDECzyY799">지원하기 (~3/11 18:00) →</MagBtn>
       </R>
     </div>
     <div style={{
