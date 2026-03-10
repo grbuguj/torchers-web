@@ -205,7 +205,11 @@ const Team = () => (
               { label: "Tel", href: "tel:010-4622-2849", text: "010-4622-2849" },
               { label: "GitHub", href: "https://github.com/grbuguj", text: "grbuguj" },
             ] },
-          { name: "모집 중", role: "Developer", color: "#10b981", empty: true },
+          { name: "안재일", role: "Developer · 부팀장", color: "#10b981", links: [
+              { label: "Email", href: "mailto:a090066@gmail.com", text: "a090066@gmail.com" },
+              { label: "Tel", href: "tel:010-3030-9703", text: "010-3030-9703" },
+              { label: "GitHub", href: "https://github.com/jaeiling", text: "jaeiling" },
+            ] },
           { name: "모집 중", role: "Designer", color: "#8b5cf6", empty: true },
           { name: "모집 중", role: "Marketer", color: "#f59e0b", empty: true },
         ].map((m, i) => (
