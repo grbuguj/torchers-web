@@ -193,59 +193,101 @@ const About = () => (
   </section>
 );
 
-const Team = () => (
-  <section id="team" style={{ padding: "120px 28px", background: C.white }}>
-    <div style={{ maxWidth: 1080, margin: "0 auto" }}>
-      <R><p style={{ fontFamily: "'DM Mono', monospace", fontSize: 12, color: C.blue, letterSpacing: 3, textTransform: "uppercase", marginBottom: 14, fontWeight: 500 }}>Team</p></R>
-      <R d={0.06}><h2 style={{ fontFamily: "'Noto Sans KR', sans-serif", fontSize: "clamp(26px, 4vw, 42px)", fontWeight: 900, margin: "0 0 48px", letterSpacing: -1 }}>함께 만드는 사람들</h2></R>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(230px, 1fr))", gap: 14 }}>
-        {[
-          { name: "김재웅", role: "Developer · 팀장", color: C.blue, links: [
-              { label: "Email", href: "mailto:bugs0613@naver.com", text: "bugs0613@naver.com" },
-              { label: "Tel", href: "tel:010-4622-2849", text: "010-4622-2849" },
-              { label: "GitHub", href: "https://github.com/grbuguj", text: "grbuguj" },
-            ] },
-          { name: "안재일", role: "Developer · 부팀장", color: "#10b981", links: [
-              { label: "Email", href: "mailto:a090066@gmail.com", text: "a090066@gmail.com" },
-              { label: "Tel", href: "tel:010-3030-9703", text: "010-3030-9703" },
-              { label: "GitHub", href: "https://github.com/jaeiling", text: "jaeiling" },
-            ] },
-          { name: "모집 중", role: "Designer", color: "#8b5cf6", empty: true },
-          { name: "모집 중", role: "Marketer", color: "#f59e0b", empty: true },
-        ].map((m, i) => (
-          <R key={i} d={i * 0.06}>
-            <div style={{
-              padding: "26px 22px", borderRadius: 16, background: C.bg,
-              border: `1px solid ${C.gray200}`, transition: "all 0.35s cubic-bezier(0.16,1,0.3,1)",
-              cursor: "default", opacity: m.empty ? 0.5 : 1,
-            }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = m.color; e.currentTarget.style.opacity = "1"; e.currentTarget.style.transform = "translateY(-3px)"; }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = C.gray200; e.currentTarget.style.opacity = m.empty ? "0.5" : "1"; e.currentTarget.style.transform = "none"; }}>
-              <div style={{ width: 7, height: 7, borderRadius: "50%", background: m.color, marginBottom: 18 }} />
-              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, fontWeight: 500, color: m.color, letterSpacing: 1, textTransform: "uppercase", marginBottom: 8 }}>{m.role}</div>
-              <div style={{ fontSize: 22, fontWeight: 800, color: m.empty ? C.gray400 : C.black }}>{m.name}</div>
-              {m.links && (
-                <div style={{ marginTop: 14, display: "flex", flexDirection: "column", gap: 6 }}>
-                  {m.links.map((l, j) => (
-                    <a key={j} href={l.href} target={l.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" style={{
-                      fontFamily: "'DM Mono', monospace", fontSize: 12, color: C.gray500,
-                      textDecoration: "none", transition: "color 0.2s", display: "flex", alignItems: "center", gap: 6,
-                    }}
-                      onMouseEnter={e => e.currentTarget.style.color = C.blue}
-                      onMouseLeave={e => e.currentTarget.style.color = C.gray500}
-                    >
-                      <span style={{ fontSize: 11, color: C.gray400, minWidth: 42 }}>{l.label}</span>{l.text}
-                    </a>
-                  ))}
-                </div>
-              )}
-            </div>
-          </R>
-        ))}
+const Team = () => {
+  const [tab, setTab] = useState("developer");
+  const tabs = [
+    { id: "developer", label: "Developer", color: C.blue },
+    { id: "marketer", label: "Marketer", color: "#f59e0b" },
+    { id: "designer", label: "Designer", color: "#8b5cf6" },
+  ];
+  const members = {
+    developer: [
+      { name: "김재웅", role: "Developer · 팀장", color: C.blue, links: [
+          { label: "Email", href: "mailto:bugs0613@naver.com", text: "bugs0613@naver.com" },
+          { label: "Tel", href: "tel:010-4622-2849", text: "010-4622-2849" },
+          { label: "GitHub", href: "https://github.com/grbuguj", text: "grbuguj" },
+        ] },
+      { name: "안재일", role: "Developer · 부팀장", color: C.blue, links: [
+          { label: "Email", href: "mailto:a090066@gmail.com", text: "a090066@gmail.com" },
+          { label: "Tel", href: "tel:010-3030-9703", text: "010-3030-9703" },
+          { label: "GitHub", href: "https://github.com/jaeiling", text: "jaeiling" },
+        ] },
+      { name: "모집 중", role: "Developer", color: C.blue, empty: true },
+    ],
+    marketer: [
+      { name: "모집 중", role: "Marketer", color: "#f59e0b", empty: true },
+      { name: "모집 중", role: "Marketer", color: "#f59e0b", empty: true },
+      { name: "모집 중", role: "Marketer", color: "#f59e0b", empty: true },
+    ],
+    designer: [
+      { name: "모집 중", role: "Designer", color: "#8b5cf6", empty: true },
+      { name: "모집 중", role: "Designer", color: "#8b5cf6", empty: true },
+      { name: "모집 중", role: "Designer", color: "#8b5cf6", empty: true },
+    ],
+  };
+  const activeColor = tabs.find(t => t.id === tab)?.color || C.blue;
+
+  return (
+    <section id="team" style={{ padding: "120px 28px", background: C.white }}>
+      <div style={{ maxWidth: 1080, margin: "0 auto" }}>
+        <R><p style={{ fontFamily: "'DM Mono', monospace", fontSize: 12, color: C.blue, letterSpacing: 3, textTransform: "uppercase", marginBottom: 14, fontWeight: 500 }}>Team</p></R>
+        <R d={0.06}><h2 style={{ fontFamily: "'Noto Sans KR', sans-serif", fontSize: "clamp(26px, 4vw, 42px)", fontWeight: 900, margin: "0 0 36px", letterSpacing: -1 }}>함께 만드는 사람들</h2></R>
+
+        {/* Tabs */}
+        <R d={0.1}>
+          <div style={{ display: "flex", gap: 8, marginBottom: 32 }}>
+            {tabs.map(t => (
+              <button key={t.id} onClick={() => setTab(t.id)} style={{
+                padding: "10px 24px", borderRadius: 100, fontSize: 14, fontWeight: 600,
+                fontFamily: "'DM Mono', monospace", cursor: "pointer", transition: "all 0.25s",
+                border: tab === t.id ? "none" : `1.5px solid ${C.gray200}`,
+                background: tab === t.id ? t.color : "transparent",
+                color: tab === t.id ? "#fff" : C.gray500,
+              }}
+                onMouseEnter={e => { if (tab !== t.id) { e.currentTarget.style.borderColor = t.color; e.currentTarget.style.color = t.color; } }}
+                onMouseLeave={e => { if (tab !== t.id) { e.currentTarget.style.borderColor = C.gray200; e.currentTarget.style.color = C.gray500; } }}
+              >{t.label}</button>
+            ))}
+          </div>
+        </R>
+
+        {/* Cards */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(230px, 1fr))", gap: 14 }}>
+          {members[tab].map((m, i) => (
+            <R key={`${tab}-${i}`} d={i * 0.06}>
+              <div style={{
+                padding: "26px 22px", borderRadius: 16, background: C.bg,
+                border: `1px solid ${C.gray200}`, transition: "all 0.35s cubic-bezier(0.16,1,0.3,1)",
+                cursor: "default", opacity: m.empty ? 0.5 : 1,
+              }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = m.color; e.currentTarget.style.opacity = "1"; e.currentTarget.style.transform = "translateY(-3px)"; }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = C.gray200; e.currentTarget.style.opacity = m.empty ? "0.5" : "1"; e.currentTarget.style.transform = "none"; }}>
+                <div style={{ width: 7, height: 7, borderRadius: "50%", background: m.color, marginBottom: 18 }} />
+                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, fontWeight: 500, color: m.color, letterSpacing: 1, textTransform: "uppercase", marginBottom: 8 }}>{m.role}</div>
+                <div style={{ fontSize: 22, fontWeight: 800, color: m.empty ? C.gray400 : C.black }}>{m.name}</div>
+                {m.links && (
+                  <div style={{ marginTop: 14, display: "flex", flexDirection: "column", gap: 6 }}>
+                    {m.links.map((l, j) => (
+                      <a key={j} href={l.href} target={l.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" style={{
+                        fontFamily: "'DM Mono', monospace", fontSize: 12, color: C.gray500,
+                        textDecoration: "none", transition: "color 0.2s", display: "flex", alignItems: "center", gap: 6,
+                      }}
+                        onMouseEnter={e => e.currentTarget.style.color = C.blue}
+                        onMouseLeave={e => e.currentTarget.style.color = C.gray500}
+                      >
+                        <span style={{ fontSize: 11, color: C.gray400, minWidth: 42 }}>{l.label}</span>{l.text}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </R>
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 const Projects = () => (
   <section id="projects" style={{ padding: "120px 28px" }}>
