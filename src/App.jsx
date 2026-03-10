@@ -134,7 +134,7 @@ const Hero = () => {
               opacity: show ? 1 : 0, transform: show ? "translateY(0)" : "translateY(-16px)",
               transition: "all 0.3s cubic-bezier(0.16,1,0.3,1)",
             }}>{words[i]}</span><br />
-            서비스로 만든다.
+            서비스로 만들다.
           </h1>
         </R>
         <R d={0.16}>
@@ -200,7 +200,11 @@ const Team = () => (
       <R d={0.06}><h2 style={{ fontFamily: "'Noto Sans KR', sans-serif", fontSize: "clamp(26px, 4vw, 42px)", fontWeight: 900, margin: "0 0 48px", letterSpacing: -1 }}>함께 만드는 사람들</h2></R>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(230px, 1fr))", gap: 14 }}>
         {[
-          { name: "김재웅", role: "Developer · 팀장", color: C.blue },
+          { name: "김재웅", role: "Developer · 팀장", color: C.blue, links: [
+              { label: "Email", href: "mailto:bugs0613@naver.com", text: "bugs0613@naver.com" },
+              { label: "Tel", href: "tel:010-4622-2849", text: "010-4622-2849" },
+              { label: "GitHub", href: "https://github.com/grbuguj", text: "grbuguj" },
+            ] },
           { name: "모집 중", role: "Developer", color: "#10b981", empty: true },
           { name: "모집 중", role: "Designer", color: "#8b5cf6", empty: true },
           { name: "모집 중", role: "Marketer", color: "#f59e0b", empty: true },
@@ -216,6 +220,21 @@ const Team = () => (
               <div style={{ width: 7, height: 7, borderRadius: "50%", background: m.color, marginBottom: 18 }} />
               <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, fontWeight: 500, color: m.color, letterSpacing: 1, textTransform: "uppercase", marginBottom: 8 }}>{m.role}</div>
               <div style={{ fontSize: 22, fontWeight: 800, color: m.empty ? C.gray400 : C.black }}>{m.name}</div>
+              {m.links && (
+                <div style={{ marginTop: 14, display: "flex", flexDirection: "column", gap: 6 }}>
+                  {m.links.map((l, j) => (
+                    <a key={j} href={l.href} target={l.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" style={{
+                      fontFamily: "'DM Mono', monospace", fontSize: 12, color: C.gray500,
+                      textDecoration: "none", transition: "color 0.2s", display: "flex", alignItems: "center", gap: 6,
+                    }}
+                      onMouseEnter={e => e.currentTarget.style.color = C.blue}
+                      onMouseLeave={e => e.currentTarget.style.color = C.gray500}
+                    >
+                      <span style={{ fontSize: 11, color: C.gray400, minWidth: 42 }}>{l.label}</span>{l.text}
+                    </a>
+                  ))}
+                </div>
+              )}
             </div>
           </R>
         ))}
