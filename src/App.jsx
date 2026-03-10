@@ -189,14 +189,6 @@ const About = () => (
         ))}
       </div>
 
-      {/* Poster */}
-      <R d={0.3}>
-        <div style={{ marginTop: 56, maxWidth: 400, borderRadius: 20, overflow: "hidden", border: `1px solid ${C.gray200}`, boxShadow: "0 6px 24px rgba(0,0,0,0.05)", transition: "transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s", cursor: "default" }}
-          onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 12px 40px rgba(0,0,0,0.08)"; }}
-          onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "0 6px 24px rgba(0,0,0,0.05)"; }}>
-          <img src="/poster.png" alt="횃불이유괴단 포스터" style={{ width: "100%", height: "auto", display: "block" }} />
-        </div>
-      </R>
     </div>
   </section>
 );
