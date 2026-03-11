@@ -116,17 +116,12 @@ const Hero = () => {
     }}>
       <div style={{ position: "absolute", inset: 0, opacity: 0.3, backgroundImage: `radial-gradient(circle, ${C.gray200} 1px, transparent 1px)`, backgroundSize: "30px 30px" }} />
       <div style={{ position: "absolute", top: "8%", right: "-6%", width: 520, height: 520, borderRadius: "50%", background: `radial-gradient(circle, ${C.bluePale}, transparent 70%)`, filter: "blur(60px)", animation: "drift 10s ease-in-out infinite" }} />
-      <div style={{ maxWidth: 1080, margin: "0 auto", width: "100%", position: "relative" }}>
-        <R>
-          <span style={{
-            display: "inline-block", padding: "6px 16px", borderRadius: 100, marginBottom: 28,
-            background: C.bluePale, border: `1px solid ${C.blue}22`,
-            fontFamily: "'DM Mono', monospace", fontSize: 13, color: C.blue, fontWeight: 500,
-          }}>트렌드를 서비스로 만드는 팀</span>
-        </R>
+      <div style={{ maxWidth: 1080, margin: "0 auto", width: "100%", position: "relative", display: "flex", alignItems: "center", gap: 48, flexWrap: "wrap" }}>
+        <div style={{ flex: "1 1 480px" }}>
+
         <R d={0.08}>
           <h1 style={{
-            fontFamily: "'Noto Sans KR', sans-serif", fontSize: "clamp(40px, 7vw, 76px)",
+            fontFamily: "'Noto Sans KR', sans-serif", fontSize: "clamp(36px, 5.5vw, 68px)",
             fontWeight: 900, lineHeight: 1.1, margin: "0 0 24px", letterSpacing: -2, color: C.black,
           }}>
             <span style={{
@@ -146,6 +141,20 @@ const Hero = () => {
           <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
             <MagBtn filled onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}>프로젝트 보기</MagBtn>
             <MagBtn onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>지원하기 →</MagBtn>
+          </div>
+        </R>
+        </div>
+        <R d={0.3} style={{ flex: "0 1 360px" }}>
+          <div style={{
+            borderRadius: 24, overflow: "hidden", border: `1px solid ${C.gray200}`,
+            boxShadow: "0 8px 40px rgba(0,0,0,0.06)",
+            transition: "transform 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s",
+            cursor: "default",
+          }}
+            onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-6px) rotate(-1deg)"; e.currentTarget.style.boxShadow = "0 20px 60px rgba(0,0,0,0.1)"; }}
+            onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "0 8px 40px rgba(0,0,0,0.06)"; }}
+          >
+            <img src="/poster.png" alt="횃불이유괴단 포스터" style={{ width: "100%", height: "auto", display: "block" }} />
           </div>
         </R>
       </div>
