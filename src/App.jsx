@@ -140,7 +140,7 @@ const Hero = () => {
         <R d={0.24}>
           <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
             <MagBtn filled onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}>프로젝트 보기</MagBtn>
-            <MagBtn onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>지원하기 →</MagBtn>
+            <MagBtn onClick={() => alert("현재는 지원 기간이 아닙니다.\n다음 모집은 인스타그램(@torch.ers)에서 안내드리겠습니다.")}>지원하기 →</MagBtn>
           </div>
         </R>
         </div>
@@ -375,7 +375,7 @@ const Contact = () => (
         </p>
       </R>
       <R d={0.18}>
-        <MagBtn filled href="https://forms.gle/cc8EivjRDECzyY799">지원하기 (~3/11 18:00) →</MagBtn>
+        <MagBtn filled onClick={() => alert("현재는 지원 기간이 아닙니다.\n다음 모집은 인스타그램(@torch.ers)에서 안내드리겠습니다.")}>지원 마감</MagBtn>
       </R>
     </div>
     <div style={{
