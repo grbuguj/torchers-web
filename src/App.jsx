@@ -263,20 +263,36 @@ const Team = () => (
             { label: "Tel", href: "tel:010-3030-9703", text: "010-3030-9703" },
             { label: "GitHub", href: "https://github.com/jaeiling", text: "jaeiling" },
           ] },
-        { name: "모집 중", role: "Developer", empty: true },
+        { name: "정지인", role: "Developer", links: [
+            { label: "Email", href: "mailto:cki08543@gmail.com", text: "cki08543@gmail.com" },
+            { label: "Tel", href: "tel:010-6228-5167", text: "010-6228-5167" },
+        { label: "GitHub", href: "https://github.com/jiin-jung", text: "jiin-jung" },
+          ] },
+        { name: "임완렬", role: "Developer", links: [
+            { label: "Email", href: "mailto:limwr706@gmail.com", text: "limwr706@gmail.com" },
+            { label: "Tel", href: "tel:010-2531-2167", text: "010-2531-2167" },
+            { label: "GitHub", href: "https://github.com", text: "예정" },
+          ] }
       ]} />
 
-      <TeamRow label="Marketer" color="#f59e0b" members={[
-        { name: "모집 중", role: "Marketer", empty: true },
-        { name: "모집 중", role: "Marketer", empty: true },
-        { name: "모집 중", role: "Marketer", empty: true },
-      ]} />
+    <TeamRow label="Marketer" color="#f59e0b" members={[
+        { name: "신예림", role: "Marketer", links: [
+                { label: "Email", href: "mailto:yerim03722@naver.com", text: "yerim03722@naver.com" },
+                { label: "Tel", href: "tel:010-9097-8604", text: "010-9097-8604" },
+                { label: "Link", href: "#", text: "예정" },
+            ] },
+        { name: "장원일", role: "Marketer", links: [
+                { label: "Email", href: "mailto:aaa3094412@gmail.com", text: "aaa3094412@gmail.com" },
+                { label: "Tel", href: "tel:010-3993-6585", text: "010-3993-6585" },
+                { label: "Link", href: "#", text: "예정" },
+            ] },
+        { name: "이준범", role: "Marketer", links: [
+                { label: "Email", href: "mailto:bluedog04@daum.net", text: "bluedog04@daum.net" },
+                { label: "Tel", href: "tel:010-7603-0998", text: "010-7603-0998" },
+                { label: "Link", href: "#", text: "예정" },
+            ] },
+    ]} />
 
-      <TeamRow label="Designer" color="#8b5cf6" members={[
-        { name: "모집 중", role: "Designer", empty: true },
-        { name: "모집 중", role: "Designer", empty: true },
-        { name: "모집 중", role: "Designer", empty: true },
-      ]} />
     </div>
   </section>
 );
