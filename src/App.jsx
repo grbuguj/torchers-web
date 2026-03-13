@@ -271,7 +271,7 @@ const Team = () => (
         { name: "임완렬", role: "Developer", links: [
             { label: "Email", href: "mailto:limwr706@gmail.com", text: "limwr706@gmail.com" },
             { label: "Tel", href: "tel:010-2531-2167", text: "010-2531-2167" },
-            { label: "GitHub", href: "https://github.com", text: "예정" },
+            { label: "GitHub", href: "https://github.com/limwr706", text: "limwr706" },
           ] }
       ]} />
 
